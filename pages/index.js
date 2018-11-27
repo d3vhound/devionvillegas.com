@@ -13,7 +13,7 @@ class Index extends React.Component {
 			const json2 = await res2.json()
 			return { gh: json, spotify: json2.items }
 		} catch (err) {
-			console.log(err)
+			console.error(err)
 		}
 	}
 
