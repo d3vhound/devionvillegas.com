@@ -11,6 +11,7 @@ class Index extends React.Component {
 			const res2 = await fetch('https://devionvillegas.com/spotify/')
 			const json = await res.json()
 			const json2 = await res2.json()
+			console.log(res)
 			return { gh: json, spotify: json2.items }
 		} catch (err) {
 			console.error(err)
