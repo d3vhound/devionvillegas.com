@@ -84,7 +84,9 @@ export default class Activity extends React.Component {
 									</ListItemLogo>
 									<ListItemContainer>
 										<ListItemText>Updated <a href={`https://github.com/${item.repo.name}`}>{item.repo.name}</a></ListItemText>
-										{/* <p>{formatDistanceStrict(item.created_at, new Date()) + ' ago'}</p> */}
+										<ListItemText time={true}>
+											{formatDistanceStrict(item.created_at, new Date()) + ' ago'}
+										</ListItemText>
 									</ListItemContainer>
 								</ListItemWrapper>
 							)

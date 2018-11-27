@@ -24,36 +24,42 @@ export default class MyDocument extends Document {
 						font-family: MaisonNeue;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Light.otf);
 						font-weight: 300;
+						font-display: swap;
 					}
 
 					@font-face {
 						font-family: MaisonNeue;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Book.otf);
 						font-weight: 400;
+						font-display: swap;
 					}
 					
 					@font-face {
 						font-family: MaisonNeue-Mono;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Mono.otf);
 						font-weight: 400;
+						font-display: swap;
 					}
 					
 					@font-face {
 						font-family: MaisonNeue;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Medium.otf);
 						font-weight: 500;
+						font-display: swap;
 					}
 
 					@font-face {
 						font-family: MaisonNeue;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Demi.otf);
 						font-weight: bold;
+						font-display: swap;
 					}
 
 					@font-face {
 						font-family: MaisonNeue;
 						src: url(/static/fonts/MaisonNeue/MaisonNeue-Bold.otf);
 						font-weight: 700;
+						font-display: swap;
 					}
 
 					html {
@@ -103,7 +109,7 @@ export default class MyDocument extends Document {
 					}
 					
 					body {
-						font-family: MaisonNeue;
+						font-family: "MaisonNeue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 						font-style: normal;
 						background: #000;
 						color: #fff;
