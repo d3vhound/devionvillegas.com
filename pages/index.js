@@ -8,7 +8,7 @@ class Index extends React.Component {
 	static async getInitialProps({ req }) {
 		try {
 			const res = await fetch('https://api.github.com/users/d3vhound/events')
-			const res2 = await fetch('http://localhost:3030/spotify')
+			const res2 = await fetch('https://devionvillegas.com/spotify/')
 			const json = await res.json()
 			const json2 = await res2.json()
 			return { gh: json, spotify: json2.items }
