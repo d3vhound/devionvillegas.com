@@ -22,6 +22,8 @@ const StyledA = styled.a`
 	color: #fff;
 	cursor: pointer;
 	text-decoration: underline;
+	max-width: 100%;
+	height: auto;
 `
 
 const Image = styled.img`
@@ -54,7 +56,7 @@ class Item extends React.Component {
 			<ImageSection ref={innerRef} visible={this.props.visible} >
 				<Link key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
 					<StyledA>
-						<Image src={this.props.visible ? project.media_url : ""} />
+						<Image src={project.media_url} />
 						<Text>{project.title}</Text>
 					</StyledA>
 				</Link>
@@ -87,7 +89,6 @@ export default class ProjectItem extends React.Component {
 		const { project } = this.props
 		return (
 			<Waypoint 
-				topOffset="-300px"
 				onEnter={this._handleVisible}
 			>
 				<ItemWithRef project={project} visible={this.state.visible} />
