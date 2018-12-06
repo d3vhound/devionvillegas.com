@@ -87,6 +87,7 @@ export default class ProjectItem extends React.Component {
 		const { project } = this.props
 		return (
 			<Waypoint 
+				topOffset="-300px"
 				onEnter={this._handleVisible}
 			>
 				<ItemWithRef project={project} visible={this.state.visible} />
