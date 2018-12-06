@@ -1,8 +1,27 @@
 import * as React from 'react'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
+import Link from 'next/link'
+import Projects from '../components/Projects'
 import 'isomorphic-unfetch'
 import '../assets/styles.scss'
+const projectFileNames =
+  preval`
+module.exports = require("fs").readdirSync("./pages/projects")
+` || []
+
+const projects = projectFileNames.map(name => {
+  const {
+    default: Component,
+    meta: { title }
+  } = require("./projects/" + name)
+
+  return {
+    Component,
+		title,
+		name
+  }
+})
 
 class Index extends React.Component {
 	static async getInitialProps({ req }) {
@@ -15,6 +34,7 @@ class Index extends React.Component {
 			return { gh: json, spotify: json2.items }
 		} catch (err) {
 			console.error(err)
+			return { spotify: [], gh: [] }
 		}
 	}
 
@@ -22,6 +42,7 @@ class Index extends React.Component {
 		return (
 			<Layout>
 				<Header ghactivity={this.props.gh} spotifyActivity={this.props.spotify} />
+				<Projects projects={projects} />
 			</Layout>
 		)
 	}

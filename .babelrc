@@ -4,6 +4,7 @@
   ],
   "plugins": [
 		"babel-plugin-styled-components",
-		"inline-react-svg"
+		"inline-react-svg",
+		"preval"
   ]
 }

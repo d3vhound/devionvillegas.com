@@ -65,8 +65,12 @@ const Spacer = styled.div`
 const HR = styled.hr`
 	background: rgba(127, 127, 127, 0.2);
 	border: 0;
-	height: 1px;
+	height: 1.5px;
 	display: block;
+`
+
+const EndBlock = styled.div`
+	margin-top: 5rem;
 `
 
 
@@ -84,8 +88,12 @@ export default class Header extends React.Component {
 					<HR />
 					<br />
 					<Body>
-						Devion Villegas is a Texas based software developer helping enterprise and startup organizations build web applications(PWAs), mobile apps, and cloud infrastructure.
+						Devion Villegas is a software developer helping enterprise and startup organizations build web applications, PWAs, mobile apps, and cloud infrastructure.
 					</Body>
+					<EndBlock>
+						<Text>Selected Work, 2016—2018</Text>
+						<Text>↓</Text>
+					</EndBlock>
 				</Col1>
 				<Spacer />
 				<Col2>
