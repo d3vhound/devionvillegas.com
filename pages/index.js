@@ -13,13 +13,14 @@ module.exports = require("fs").readdirSync("./pages/projects")
 const projects = projectFileNames.map(name => {
   const {
     default: Component,
-    meta: { title }
+    meta: { title, media_url }
   } = require("./projects/" + name)
 
   return {
     Component,
 		title,
-		name
+		name,
+		media_url
   }
 })
 
@@ -30,7 +31,7 @@ class Index extends React.Component {
 			const res2 = await fetch('https://devionvillegas.com/spotify/')
 			const json = await res.json()
 			const json2 = await res2.json()
-			console.log(res)
+			console.log(json)
 			return { gh: json, spotify: json2.items }
 		} catch (err) {
 			console.error(err)
