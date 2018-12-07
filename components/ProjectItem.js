@@ -54,7 +54,7 @@ class Item extends React.Component {
 		const { project, innerRef } = this.props
 		return (
 			<ImageSection ref={innerRef} visible={this.props.visible} >
-				<Link key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
+				<Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
 					<StyledA>
 						<Image src={project.media_url} />
 						<Text>{project.title}</Text>
