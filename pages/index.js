@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Link from 'next/link'
 import Projects from '../components/Projects'
-import 'isomorphic-unfetch'
 import cachedFetch, { overrideCache } from '../lib/cached-json-fetch'
 import '../assets/styles.scss'
 const projectFileNames =
@@ -35,13 +34,13 @@ class Index extends React.Component {
 			const res2 = await cachedFetch(SPOTIFY_SONGS)
 			const isServerRendered = !!ctx.req
 
-			if (res.status === 403) {
-				return { gh: [], spotify: res2.items, isServerRendered }
+			if (res.message) {
+				return { gh: [], spotify: res2, isServerRendered }
 			}
 
-			return { gh: res, spotify: res2.items, isServerRendered }
+			return { gh: res, spotify: res2, isServerRendered }
 		} catch (err) {
-			console.error("index error", err)
+			console.error("index.js getInitialProps error", err)
 			return { spotify: [], gh: [], isServerRendered }
 		}
 	}
@@ -56,7 +55,7 @@ class Index extends React.Component {
 	render() {
 		return (
 			<Layout>
-				<Header ghactivity={this.props.gh} spotifyActivity={this.props.spotify} />
+				<Header ghactivity={this.props.gh} spotifyActivity={this.props.spotify.items} />
 				<Projects projects={projects} />
 			</Layout>
 		)

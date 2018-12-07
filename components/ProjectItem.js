@@ -78,14 +78,12 @@ export default class ProjectItem extends React.Component {
 	}
 
 	_handleVisible = () => {
-		console.log('toggling')
 		this.setState({
 			visible: true
 		})
 	}
 
 	render() {
-		console.log(this.state)
 		const { project } = this.props
 		return (
 			<Waypoint 
