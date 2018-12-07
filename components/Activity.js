@@ -44,6 +44,7 @@ const ListItemText = styled.p`
 
 export default class Activity extends React.Component {
 	componentWillMount() {
+		console.log(this.props)
 		let ghArr = this.props.gh.slice(0, 3)
 		let spotifyArr = this.props.spotify.slice(0,3)
 		let arr = ghArr.concat(spotifyArr)

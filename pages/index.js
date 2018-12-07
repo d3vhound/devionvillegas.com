@@ -4,11 +4,15 @@ import Header from '../components/Header'
 import Link from 'next/link'
 import Projects from '../components/Projects'
 import 'isomorphic-unfetch'
+import cachedFetch, { overrideCache } from '../lib/cached-json-fetch'
 import '../assets/styles.scss'
 const projectFileNames =
   preval`
 module.exports = require("fs").readdirSync("./pages/projects")
 ` || []
+
+const GH_URL = 'https://api.github.com/users/d3vhound/events'
+const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
 
 const projects = projectFileNames.map(name => {
   const {
@@ -25,20 +29,28 @@ const projects = projectFileNames.map(name => {
 })
 
 class Index extends React.Component {
-	static async getInitialProps({ req }) {
+	static async getInitialProps(ctx) {
 		try {
-			const res = await fetch('https://api.github.com/users/d3vhound/events')
-			const res2 = await fetch('https://devionvillegas.com/spotify/')
-			const json = await res.json()
-			const json2 = await res2.json()
+			const res = await cachedFetch(GH_URL)
+			const res2 = await cachedFetch(SPOTIFY_SONGS)
+			const isServerRendered = !!ctx.req
+
 			if (res.status === 403) {
-				return { gh: [], spotify: json2.items }
+				return { gh: [], spotify: res2.items, isServerRendered }
 			}
-			return { gh: json, spotify: json2.items }
+
+			return { gh: res, spotify: res2.items, isServerRendered }
 		} catch (err) {
-			console.error(err)
-			return { spotify: [], gh: [] }
+			console.error("index error", err)
+			return { spotify: [], gh: [], isServerRendered }
 		}
+	}
+
+	async componentDidMount() {
+		if (this.props.isServerRendered) {
+      await overrideCache(GH_URL, this.props.gh)
+      await overrideCache(SPOTIFY_SONGS, this.props.spotify)
+    }
 	}
 
 	render() {
