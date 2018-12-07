@@ -40,7 +40,6 @@ const ImageSection = styled.div`
 	${props => !props.visible && css`
     opacity: 0;
 		transform: translateY(40px);
-		background-color: #1b1b1b;
   `}
 
 	${props => props.visible && css`
