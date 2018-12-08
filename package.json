@@ -27,7 +27,6 @@
     "next-preload-headers": "^3.0.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-lazy-load-image-component": "^1.1.5",
     "react-spring": "^6.1.10",
     "react-waypoint": "^8.1.0",
     "styled-components": "^4.1.1"
