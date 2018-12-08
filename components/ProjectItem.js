@@ -6,7 +6,7 @@ import Waypoint from 'react-waypoint'
 const Text = styled.p`
 	font-weight: 400;
 	letter-spacing: -0.2px;
-	font-size: 1.6rem;
+	font-size: 2rem;
 	line-height: 1.5;
   color: #fff;
   text-rendering: optimizeLegibility;
@@ -36,6 +36,7 @@ const Image = styled.img`
 const ImageSection = styled.div`
 	transform: translateY(40px);
 	transition: transform 1s ease-in-out, opacity .8s ease-in-out;
+	margin: 4rem auto;
 
 	${props => !props.visible && css`
     opacity: 0;

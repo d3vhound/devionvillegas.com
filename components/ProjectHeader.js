@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Activity from '../components/Activity'
+import Link from 'next/link'
 
 const Section = styled.section`
 	margin: 2rem auto;
@@ -20,6 +20,7 @@ const Col1 = styled.div`
 		margin: 1rem 0;
 	}
 `
+
 const Col2 = styled.div`
 	width: 100%;
 	margin: 2rem 0;
@@ -48,20 +49,6 @@ const Text = styled.p`
 	}
 `
 
-const Body = styled.p`
-	font-weight: 400;
-	letter-spacing: 0.2px;
-	font-size: 1.6rem;
-  line-height: 1.5;
-  color: #fff;
-  text-rendering: optimizeLegibility;
-`
-
-const Spacer = styled.div`
-	width: 8.33333%;
-	padding: 0;
-`
-
 const HR = styled.hr`
 	background: rgba(127, 127, 127, 0.2);
 	border: 0;
@@ -69,38 +56,49 @@ const HR = styled.hr`
 	display: block;
 `
 
-const EndBlock = styled.div`
-	margin-top: 5rem;
+const Body = styled.p`
+	font-weight: 400;
+	letter-spacing: 0.2px;
+	font-size: 1.6rem;
+  line-height: 1.5;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+	margin-bottom: 2rem;
 `
 
+const VisitWrapper = styled.div`
+	margin: 2rem auto;
+`
 
+const Img = styled.img`
+	width: 100%;
+	height: auto;
+`
 
-export default class Header extends React.Component {
+export default class ProjectHeader extends React.Component {
 	render() {
 		return (
 			<Section>
 				<Col1>
 					<Text>
-						<a href="mailto:hello@devionvillegas.com">							
-							hello@devionvillegas.com
-						</a>
+						{this.props.projectTitle}
 					</Text>
 					<HR />
-					<br />
-					<Body>
-						Devion Villegas is a software developer helping enterprise and startup organizations build web applications, PWAs, mobile apps, and cloud infrastructure.
-					</Body>
-					{/* <EndBlock>
-						<Text>Selected Work, 2016—2018</Text>
-						<Text>↓</Text>
-					</EndBlock> */}
+					<Body>{this.props.projectDescription}</Body>
+					<Body>{this.props.projectTechnicalDesc}</Body>
+					<VisitWrapper>
+					<Text>
+						<a target="_blank" href={this.props.url}>
+							Visit live
+						</a>
+					</Text>
+					</VisitWrapper>
 				</Col1>
-				<Spacer />
 				<Col2>
-					<Text>Activity</Text>
-					<HR />
-					<br />
-					<Activity spotify={this.props.spotifyActivity} gh={this.props.ghactivity} />
+					<Img src={this.props.projectImage} />
+					<Text>
+						{this.props.techStackIcons}
+					</Text>
 				</Col2>
 			</Section>
 		)

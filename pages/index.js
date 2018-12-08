@@ -1,7 +1,5 @@
 import * as React from 'react'
-import Layout from '../components/Layout'
 import Header from '../components/Header'
-import Link from 'next/link'
 import Projects from '../components/Projects'
 import cachedFetch, { overrideCache } from '../lib/cached-json-fetch'
 import '../assets/styles.scss'
@@ -30,34 +28,28 @@ const projects = projectFileNames.map(name => {
 class Index extends React.Component {
 	static async getInitialProps(ctx) {
 		try {
-			const res = await cachedFetch(GH_URL)
-			const res2 = await cachedFetch(SPOTIFY_SONGS)
+			const res = await cachedFetch(SPOTIFY_SONGS)
 			const isServerRendered = !!ctx.req
 
-			if (res.message) {
-				return { gh: [], spotify: res2, isServerRendered }
-			}
-
-			return { gh: res, spotify: res2, isServerRendered }
+			return { gh: [], spotify: res, isServerRendered }
 		} catch (err) {
 			console.error("index.js getInitialProps error", err)
-			return { spotify: [], gh: [], isServerRendered }
+			return { spotify: [], gh: [] }
 		}
 	}
 
 	async componentDidMount() {
 		if (this.props.isServerRendered) {
-      await overrideCache(GH_URL, this.props.gh)
       await overrideCache(SPOTIFY_SONGS, this.props.spotify)
     }
 	}
 
 	render() {
 		return (
-			<Layout>
+			<div>
 				<Header ghactivity={this.props.gh} spotifyActivity={this.props.spotify.items} />
 				<Projects projects={projects} />
-			</Layout>
+			</div>
 		)
 	}
 }

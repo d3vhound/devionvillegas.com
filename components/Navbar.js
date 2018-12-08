@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const Wrapper = styled.nav`
 	width: 100%;
@@ -24,6 +25,7 @@ const Title = styled.h1`
 	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1.5;
+	cursor: pointer;
 	text-transform: uppercase;
 	color: #FFF;
 	letter-spacing: 0.7px;
@@ -39,7 +41,9 @@ export default class Navbar extends React.Component {
 		return (
 			<Wrapper>
 				<Container>
-					<Title>Devion Villegas</Title>
+					<Link href="/">
+						<Title>Devion Villegas</Title>
+					</Link>
 				</Container>
 			</Wrapper>
 		)

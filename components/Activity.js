@@ -99,7 +99,7 @@ export default class Activity extends React.Component {
 								</ListItemLogo>
 								<ListItemContainer>
 									<ListItemText>
-										Listened to {item.track.artists[0].name} - {item.track.name}
+										Listened to <a target="_blank" href={`https://open.spotify.com/search/songs/${item.track.artists[0].name} ${item.track.name}`}>{item.track.artists[0].name} - {item.track.name}</a>
 									</ListItemText>
 									<ListItemText time={true}>
 										{formatDistanceStrict(item.played_at, new Date()) + ' ago'}
