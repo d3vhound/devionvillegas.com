@@ -14,14 +14,15 @@ const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
 const projects = projectFileNames.map(name => {
   const {
     default: Component,
-    meta: { title, media_url }
+    meta: { title, media_url, placeholder_path }
   } = require("./projects/" + name)
 
   return {
     Component,
 		title,
 		name,
-		media_url
+		media_url,
+		placeholder_path
   }
 })
 

@@ -27,10 +27,20 @@ const StyledA = styled.a`
 `
 
 const Image = styled.img`
-	display: block;
-  width: 100%;
-  height: auto;
-	margin: 2rem auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+	transition: opacity 0.5s ease 0s;
+
+	${props => !props.visible && css`
+    opacity: 0.4;
+  `}
+
+	${props => props.visible && css`
+    opacity: 1;
+  `}
 `
 
 const ImageSection = styled.div`
@@ -48,6 +58,10 @@ const ImageSection = styled.div`
 		transform: translateY(0px);
   `}
 `
+const PHWrapper = styled.div`
+	position: relative;
+  padding-top: 56.25%;
+`
 
 class Item extends React.Component {
 	render() {
@@ -56,7 +70,10 @@ class Item extends React.Component {
 			<ImageSection ref={innerRef} visible={this.props.visible} >
 				<Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
 					<StyledA>
-						<Image src={project.media_url} />
+						{/* <Image src={project.media_url} /> */}
+						<PHWrapper>
+							<Image visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
+						</PHWrapper>
 						<Text>{project.title}</Text>
 					</StyledA>
 				</Link>
