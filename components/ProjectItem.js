@@ -32,7 +32,7 @@ const Image = styled.img`
 	top: 0;
 	width: 100%;
 	height: auto;
-	transition: opacity 0.5s ease 0s;
+	transition: all 0.5s ease;
 
 	${props => !props.visible && css`
     opacity: 0.4;
@@ -41,6 +41,13 @@ const Image = styled.img`
 	${props => props.visible && css`
     opacity: 1;
   `}
+
+	${props => props.pressed && css`
+		/* transform: scale(.5, .5); */
+		width: 35%;
+		position: relative;
+		margin-right: 50px;
+	`}
 `
 
 const ImageSection = styled.div`
@@ -61,22 +68,49 @@ const ImageSection = styled.div`
 const PHWrapper = styled.div`
 	position: relative;
   padding-top: 56.25%;
+
+	${props => props.pressed && css`
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		overflow-x: scroll;
+		padding-top: 0;
+	`}
 `
 
 class Item extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			pressed: false
+		}
+	}
 	render() {
 		const { project, innerRef } = this.props
 		return (
-			<ImageSection ref={innerRef} visible={this.props.visible} >
-				<Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
-					<StyledA>
+			<ImageSection pressed={this.state.pressed} ref={innerRef} visible={this.props.visible} >
+				{/* <Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}> */}
+					<StyledA 
+						onClick={() => {
+							console.log('test')
+							this.setState({ pressed: true })
+						}}
+					>
 						{/* <Image src={project.media_url} /> */}
-						<PHWrapper>
-							<Image visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
+						<PHWrapper pressed={this.state.pressed}>
+							<Image pressed={this.state.pressed} visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
+							{this.state.pressed && 
+								<>
+									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
+									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
+									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
+									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
+								</>
+							}
 						</PHWrapper>
 						<Text>{project.title}</Text>
 					</StyledA>
-				</Link>
+				{/* </Link> */}
 			</ImageSection>
 		)
 	}
