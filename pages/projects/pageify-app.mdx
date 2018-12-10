@@ -1,7 +1,9 @@
 export const meta = {
+	id: 2,
 	title: "Pageify",
 	type: "Social media app, Full-stack",
 	year: "2018",
+	path: "/projects/pageify-app",
 	media_url: "https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099893/pageify_qshu53.png",
 	placeholder_path: "/static/img/pageify.png",
 	technologies: ["react", "graphql", "node", "mysql"],
@@ -9,5 +11,12 @@ export const meta = {
 }
 
 
-### Pageify App
-### Social media app
+import ProjectHeader from '../../components/ProjectHeader'
+
+<ProjectHeader 
+	projectTitle="Pageify"
+	projectDescription="Full-stack social media app"
+	projectTechnicalDesc="Built with Node.js, React Native, GraphQL, and MySQL"
+	url="https://pageifyapp.com/"
+	projectImage="https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099893/pageify_qshu53.png"
+/>

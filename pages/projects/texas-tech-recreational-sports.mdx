@@ -1,7 +1,9 @@
 export const meta = {
+	id: 3,
 	title: "Texas Tech University",
 	type: "Website",
 	year: "2017",
+	path: "/projects/texas-tech-recreational-sports",
 	media_url: "https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099514/ttu-recsports_zov3kd.png",
 	placeholder_path: "/static/img/ttu-recsports.png",
 	technologies: ["php", "jquery", "js"],
@@ -9,5 +11,12 @@ export const meta = {
 }
 
 
-## Texas Tech University Recreational Center
-### Website revamp
+import ProjectHeader from '../../components/ProjectHeader'
+
+<ProjectHeader 
+	projectTitle="Texas Tech University Recreational Sports"
+	projectDescription="Full website revamp with ease of administration in mind."
+	projectTechnicalDesc="Built with PHP, ES6, jQuery, Gulp and more."
+	url="http://www.depts.ttu.edu/recsports/"
+	projectImage="https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099514/ttu-recsports_zov3kd.png"
+/>

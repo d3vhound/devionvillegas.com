@@ -4,30 +4,30 @@ import Head from 'next/head'
 import Projects from '../components/Projects'
 import cachedFetch, { overrideCache } from '../lib/cached-json-fetch'
 import '../assets/styles.scss'
-const projectFileNames =
-  preval`
-module.exports = require("fs").readdirSync("./pages/projects")
-` || []
+// const projectFileNames =
+//   preval`
+// module.exports = require("fs").readdirSync("./pages/projects")
+// ` || []
 
-const GH_URL = 'https://api.github.com/users/d3vhound/events'
-const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
+// const GH_URL = 'https://api.github.com/users/d3vhound/events'
+// const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
 
-const projects = projectFileNames.map(name => {
-  const {
-    default: Component,
-    meta: { title, media_url, placeholder_path, type, next_project }
-  } = require("./projects/" + name)
+// const projects = projectFileNames.map(name => {
+//   const {
+//     default: Component,
+//     meta: { title, media_url, placeholder_path, type, next_project }
+//   } = require("./projects/" + name)
 
-  return {
-    Component,
-		title,
-		name,
-		media_url,
-		placeholder_path,
-		type,
-		next_project
-  }
-})
+//   return {
+//     Component,
+// 		title,
+// 		name,
+// 		media_url,
+// 		placeholder_path,
+// 		type,
+// 		next_project
+//   }
+// })
 
 class Index extends React.Component {	
 	// static async getInitialProps(ctx) {
@@ -56,7 +56,7 @@ class Index extends React.Component {
 					<meta name="description" content="Devion Villegas is a software developer 	helping enterprise and startup organizations build web applications, 	PWAs,mobile apps, and cloud infrastructure." />
 				</Head>
 				<Header />
-				<Projects projects={projects} />
+				{/* <Projects projects={projects} /> */}
 			</div>
 		)
 	}

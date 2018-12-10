@@ -24,6 +24,7 @@ const StyledA = styled.a`
 	cursor: pointer;
 	max-width: 100%;
 	height: auto;
+	transition: all 300ms ease;
 `
 
 const Image = styled.img`
@@ -83,16 +84,16 @@ const MonoText = styled.p`
 
 class Item extends React.Component {
 	render() {
-		const { project, innerRef } = this.props
+		const { project, innerRef, style } = this.props
 		return (
-			<ImageSection ref={innerRef} visible={this.props.visible} >
+			<ImageSection ref={innerRef} visible={this.props.visible}>
 				<Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
 					<StyledA>
-						<PHWrapper>
+						<PHWrapper style={style}>
 							<Image visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
 						</PHWrapper>
-						<MonoText>{project.type}</MonoText>
-						<Text>{project.title}</Text>
+						<MonoText style={style}>{project.type}</MonoText>
+						<Text style={style}>{project.title}</Text>
 					</StyledA>
 				</Link>
 			</ImageSection>
@@ -119,12 +120,12 @@ export default class ProjectItem extends React.Component {
 	}
 
 	render() {
-		const { project } = this.props
+		const { project, pathname } = this.props
 		return (
 			<Waypoint 
 				onEnter={this._handleVisible}
 			>
-				<ItemWithRef project={project} visible={this.state.visible} />
+				<ItemWithRef style={this.props.style} project={project} visible={this.state.visible} />
 			</Waypoint>
 		)
 	}

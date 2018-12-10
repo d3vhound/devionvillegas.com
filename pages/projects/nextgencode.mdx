@@ -1,7 +1,9 @@
 export const meta = {
+	id: 1,
 	title: "NextGen Code Company",
 	type: "Website",
 	year: "2018",
+	path: "/projects/nextgencode",
 	media_url: "https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099499/nextgencode_f6bevu.png",
 	placeholder_path: "/static/img/nextgencode.png",
 	technologies: ["react", "gatsby"],
@@ -9,5 +11,12 @@ export const meta = {
 }
 
 
-## NextGen Code Company
-### Website
+import ProjectHeader from '../../components/ProjectHeader'
+
+<ProjectHeader 
+	projectTitle="NextGen Code Company"
+	projectDescription="Startup website with unique design elements."
+	projectTechnicalDesc="Built with the Gatsby, React.js, and Contentful"
+	url="https://nextgencode.io/"
+	projectImage="https://res.cloudinary.com/devhound/image/upload/f_auto/v1544099499/nextgencode_f6bevu.png"
+/>

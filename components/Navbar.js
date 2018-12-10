@@ -67,7 +67,7 @@ export default class Navbar extends React.Component {
 				</Container>
 				<NavRight>
 					<a target="_blank" href="https://github.com/d3vhound">
-						<img src="/static/img/github-icon-1.svg" width="35px" />
+						<img src="/static/img/github-icon-1.svg" width="25px" />
 					</a>
 				</NavRight>
 			</Wrapper>
