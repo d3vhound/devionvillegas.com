@@ -95,10 +95,10 @@ export default class ProjectHeader extends React.Component {
 					</VisitWrapper>
 				</Col1>
 				<Col2>
-					<Img src={this.props.projectImage} />
+					{/* <Img src={this.props.projectImage} />
 					<Text>
 						{this.props.techStackIcons}
-					</Text>
+					</Text> */}
 				</Col2>
 			</Section>
 		)

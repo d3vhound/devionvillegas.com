@@ -2,11 +2,12 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import Link from 'next/link'
 import Waypoint from 'react-waypoint'
+import { Icon } from '../components/Icon'
 
 const Text = styled.p`
 	font-weight: 400;
 	letter-spacing: -0.2px;
-	font-size: 2rem;
+	font-size: 1.8rem;
 	line-height: 1.5;
   color: #fff;
   text-rendering: optimizeLegibility;
@@ -21,7 +22,6 @@ const Text = styled.p`
 const StyledA = styled.a`
 	color: #fff;
 	cursor: pointer;
-	text-decoration: underline;
 	max-width: 100%;
 	height: auto;
 `
@@ -41,19 +41,18 @@ const Image = styled.img`
 	${props => props.visible && css`
     opacity: 1;
   `}
-
-	${props => props.pressed && css`
-		/* transform: scale(.5, .5); */
-		width: 35%;
-		position: relative;
-		margin-right: 50px;
-	`}
 `
 
 const ImageSection = styled.div`
+	width: 100%;
 	transform: translateY(40px);
 	transition: transform 1s ease-in-out, opacity .8s ease-in-out;
-	margin: 4rem auto;
+	margin: 2rem auto;
+
+	@media (min-width: 1024px) {
+		width: 45%;
+		margin: 2.5%;
+	}
 
 	${props => !props.visible && css`
     opacity: 0;
@@ -68,49 +67,34 @@ const ImageSection = styled.div`
 const PHWrapper = styled.div`
 	position: relative;
   padding-top: 56.25%;
+`
 
-	${props => props.pressed && css`
-		display: flex;
-		align-items: flex-start;
-		justify-content: flex-start;
-		overflow-x: scroll;
-		padding-top: 0;
-	`}
+const MonoText = styled.p`
+	font-weight: 400;
+	letter-spacing: -0.2px;
+	font-size: 1.2rem;
+	line-height: 1.5;
+  color: rgba(255, 255, 255, 0.4);
+  text-rendering: optimizeLegibility;
+	padding: 0;
+	margin-top: 2rem;
+	text-decoration: none;
 `
 
 class Item extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			pressed: false
-		}
-	}
 	render() {
 		const { project, innerRef } = this.props
 		return (
-			<ImageSection pressed={this.state.pressed} ref={innerRef} visible={this.props.visible} >
-				{/* <Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}> */}
-					<StyledA 
-						onClick={() => {
-							console.log('test')
-							this.setState({ pressed: true })
-						}}
-					>
-						{/* <Image src={project.media_url} /> */}
-						<PHWrapper pressed={this.state.pressed}>
-							<Image pressed={this.state.pressed} visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
-							{this.state.pressed && 
-								<>
-									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
-									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
-									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
-									<Image pressed={this.state.pressed} visible={this.props.visible} src={this.state.pressed ? project.media_url : ""} />
-								</>
-							}
+			<ImageSection ref={innerRef} visible={this.props.visible} >
+				<Link prefetch key={project.name} href={`/projects/${project.name.slice(0, -4)}`}>
+					<StyledA>
+						<PHWrapper>
+							<Image visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
 						</PHWrapper>
+						<MonoText>{project.type}</MonoText>
 						<Text>{project.title}</Text>
 					</StyledA>
-				{/* </Link> */}
+				</Link>
 			</ImageSection>
 		)
 	}

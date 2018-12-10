@@ -3,9 +3,13 @@ import styled from 'styled-components'
 import Activity from '../components/Activity'
 
 const Section = styled.section`
-	margin: 2rem auto;
+	margin: 4rem auto;
 	display: flex;
 	flex-wrap: wrap;
+
+	@media (min-width: 1024px) {
+		margin: 4rem auto 6rem;
+	}
 `
 
 const Col1 = styled.div`
@@ -97,10 +101,10 @@ export default class Header extends React.Component {
 				</Col1>
 				<Spacer />
 				<Col2>
-					<Text>Activity</Text>
+					{/* <Text>Activity</Text>
 					<HR />
 					<br />
-					<Activity spotify={this.props.spotifyActivity} gh={this.props.ghactivity} />
+					<Activity spotify={this.props.spotifyActivity} gh={this.props.ghactivity} /> */}
 				</Col2>
 			</Section>
 		)
