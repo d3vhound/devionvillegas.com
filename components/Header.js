@@ -101,10 +101,10 @@ export default class Header extends React.Component {
 				</Col1>
 				<Spacer />
 				<Col2>
-					{/* <Text>Activity</Text>
+					<Text>Activity</Text>
 					<HR />
 					<br />
-					<Activity spotify={this.props.spotifyActivity} gh={this.props.ghactivity} /> */}
+					<Activity spotify={this.props.spotify} gh={this.props.ghactivity} />
 				</Col2>
 			</Section>
 		)

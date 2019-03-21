@@ -92,8 +92,15 @@ class Item extends React.Component {
 						<PHWrapper style={style}>
 							<Image visible={this.props.visible} src={this.props.visible ? project.media_url : project.placeholder_path} />
 						</PHWrapper>
-						<MonoText style={style}>{project.type}</MonoText>
-						<Text style={style}>{project.title}</Text>
+            <div style={{ display: 'flex' }}>
+            <div style={{ width: '50%' }}>
+						  <MonoText style={style}>{project.type}</MonoText>
+						  <Text style={style}>{project.title}</Text>
+            </div>
+            <div style={{ width: '50%', display: 'inline-block', textAlign: 'right' }}>
+              <MonoText>{project.year}</MonoText>
+            </div>
+            </div>
 					</StyledA>
 				</Link>
 			</ImageSection>

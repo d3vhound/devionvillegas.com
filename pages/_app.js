@@ -9,7 +9,7 @@ module.exports = require("fs").readdirSync("./pages/projects")
 const projects = projectFileNames.map(name => {
   const {
     default: Component,
-    meta: { path, id, title, media_url, placeholder_path, type, next_project }
+    meta: { path, id, title, year, media_url, placeholder_path, type, next_project }
   } = require("./projects/" + name)
 
   return {
@@ -20,7 +20,8 @@ const projects = projectFileNames.map(name => {
 		name,
 		media_url,
 		placeholder_path,
-		type,
+    type,
+    year,
 		next_project
   }
 })

@@ -44,8 +44,9 @@ const ListItemText = styled.p`
 
 export default class Activity extends React.Component {
 	componentWillMount() {
+    console.log(this.props.gh)
 		let ghArr = this.props.gh.slice(0, 3)
-		let spotifyArr = this.props.spotify.slice(0,3)
+		let spotifyArr = this.props.spotify.items.slice(0,3)
 		let arr = ghArr.concat(spotifyArr)
 		arr.sort((d1, d2) => {
 			let dateA = d1.id ? new Date(d1.created_at) : new Date(d1.played_at)

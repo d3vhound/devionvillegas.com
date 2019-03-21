@@ -9,8 +9,8 @@ import '../assets/styles.scss'
 // module.exports = require("fs").readdirSync("./pages/projects")
 // ` || []
 
-// const GH_URL = 'https://api.github.com/users/d3vhound/events'
-// const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
+const GH_URL = 'https://api.github.com/users/d3vhound/events'
+const SPOTIFY_SONGS = 'https://devionvillegas.com/spotify/'
 
 // const projects = projectFileNames.map(name => {
 //   const {
@@ -30,23 +30,24 @@ import '../assets/styles.scss'
 // })
 
 class Index extends React.Component {	
-	// static async getInitialProps(ctx) {
-	// 	try {
-	// 		const res = await cachedFetch(SPOTIFY_SONGS)
-	// 		const isServerRendered = !!ctx.req
+	static async getInitialProps(ctx) {
+		try {
+      const res = await cachedFetch(SPOTIFY_SONGS)
+      // const gh_res = await cachedFetch(GH_URL)
+			const isServerRendered = !!ctx.req
 
-	// 		return { gh: [], spotify: res, isServerRendered }
-	// 	} catch (err) {
-	// 		console.error("index.js getInitialProps error", err)
-	// 		return { spotify: [], gh: [] }
-	// 	}
-	// }
+			return { gh: [], spotify: res, isServerRendered }
+		} catch (err) {
+			console.error("index.js getInitialProps error", err)
+			return { spotify: [], gh: [] }
+		}
+	}
 
-	// async componentDidMount() {
-	// 	if (this.props.isServerRendered) {
-  //     await overrideCache(SPOTIFY_SONGS, this.props.spotify)
-	// 	}
-	// }
+	async componentDidMount() {
+		if (this.props.isServerRendered) {
+      await overrideCache(SPOTIFY_SONGS, this.props.spotify)
+		}
+	}
 
 	render() {
 		return (
@@ -55,7 +56,7 @@ class Index extends React.Component {
 					<title>Devion Villegas - Software Developer</title>
 					<meta name="description" content="Devion Villegas is a software developer 	helping enterprise and startup organizations build web applications, 	PWAs,mobile apps, and cloud infrastructure." />
 				</Head>
-				<Header />
+				<Header spotify={this.props.spotify} ghactivity={this.props.gh} />
 				{/* <Projects projects={projects} /> */}
 			</div>
 		)
