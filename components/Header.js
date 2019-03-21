@@ -85,9 +85,9 @@ export default class Header extends React.Component {
 			<Section>
 				<Col1>
 					<Text>
-						{/* <a href="mailto:hello@devionvillegas.com">							
-							hello@devionvillegas.com
-						</a> */}
+						<a href="mailto:devion.villegas@ttu.edu">							
+							devion.villegas@ttu.edu
+						</a>
 					</Text>
 					<HR />
 					<br />
