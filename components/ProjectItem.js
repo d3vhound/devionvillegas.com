@@ -98,7 +98,7 @@ class Item extends React.Component {
 						  <Text style={style}>{project.title}</Text>
             </div>
             <div style={{ width: '50%', display: 'inline-block', textAlign: 'right' }}>
-              <MonoText>{project.year}</MonoText>
+              <MonoText style={style}>{project.year}</MonoText>
             </div>
             </div>
 					</StyledA>
